@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="DEV/main.css" rel="stylesheet" />
+    <link href="DEV/elements.css" rel="stylesheet">
+    <link href="DEV/buttons.css" rel="stylesheet" />
+    <link href="DEV/chunks.css" rel="stylesheet" />
+    <link href="DEV/controls.css" rel="stylesheet"/>
+    <link href="DEV/svgstyles.css" rel="stylesheet" />
+    <link href="DEV/dragula.min.css" rel="stylesheet" />
+    <title>D40</title>
+</head>
+<body>
+    <main>
+        <section class="topContainer topContainer--hidden">
+            <div class="clickableElement" onclick="returnInput()">
+                <svg xmlns="http://www.w3.org/2000/svg"  width="40px" height="40px" viewBox="0 0 24 24" fill="#bebebe" id="up-arrow"><g data-name="Layer 2"><g data-name="arrowhead-up"><rect width="24" height="24" opacity="0" transform="rotate(180 12 12)"></rect><path  class="elementTwo" d="M6.63 11.61L12 7.29l5.37 4.48A1 1 0 0 0 18 12a1 1 0 0 0 .77-.36 1 1 0 0 0-.13-1.41l-6-5a1 1 0 0 0-1.27 0l-6 4.83a1 1 0 0 0-.15 1.41 1 1 0 0 0 1.41.14z"></path><path  class="elementOne" d="M12.64 12.23a1 1 0 0 0-1.27 0l-6 4.83a1 1 0 0 0-.15 1.41 1 1 0 0 0 1.41.15L12 14.29l5.37 4.48A1 1 0 0 0 18 19a1 1 0 0 0 .77-.36 1 1 0 0 0-.13-1.41z"></path></g></g></svg>
+            </div>
+        </section>
+        <section class="textInput__container">
+            <textarea id="textInput" class="textInput" rows="10" cols="100" placeholder="This is an+example of+a+sentece" autofocus></textarea>
+        </section>
+
+        <section class="mainActionButtons__wrapper">
+            <div class="sentenceCreator__container">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" viewBox="0 0 24 24" fill="#bebebe" class="downArrow"><g data-name="Layer 2"><g data-name="arrowhead-down"><path class="elementTwo" d="M17.37 12.39 12 16.71l-5.36-4.48a1 1 0 1 0-1.28 1.54l6 5a1 1 0 0 0 1.27 0l6-4.83a1 1 0 0 0 .15-1.41 1 1 0 0 0-1.41-.14z"></path><path class="elementOne" d="M11.36 11.77a1 1 0 0 0 1.27 0l6-4.83a1 1 0 0 0 .15-1.41 1 1 0 0 0-1.41-.15L12 9.71 6.64 5.23a1 1 0 0 0-1.28 1.54z"></path></g></g></svg>
+                <button id="sentenceCreator" class="buttonGeneral buttonGeneral__main" onclick="makeChunks()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40px" height="40px" id="swap" fill="#fff"><g data-name="Layer 2"><path d="M4 9h13l-1.6 1.2a1 1 0 0 0-.2 1.4 1 1 0 0 0 .8.4 1 1 0 0 0 .6-.2l4-3a1 1 0 0 0 0-1.59l-3.86-3a1 1 0 0 0-1.23 1.58L17.08 7H4a1 1 0 0 0 0 2zm16 7H7l1.6-1.2a1 1 0 0 0-1.2-1.6l-4 3a1 1 0 0 0 0 1.59l3.86 3a1 1 0 0 0 .61.21 1 1 0 0 0 .79-.39 1 1 0 0 0-.17-1.4L6.92 18H20a1 1 0 0 0 0-2z" data-name="swap"></path></g></svg>
+                    Shuffle
+                </button>
+            </div>
+            
+
+        </section>
+        <section class="jumbledSentence__wrapper">
+            <div class="jumbledSentence__container">
+                <div class="jumbledSentence">
+                    <div class="jumbledSentence__chunk">an example</div>
+                    <div class="jumbledSentence__chunk">This</div>
+                    <div class="jumbledSentence__chunk">of a sentence</div>
+                    <div class="jumbledSentence__chunk">is</div>
+                </div>
+
+            </div>
+            <div class="adviceArea">
+                <div class="adviceArea__image">
+                    <!-- Image added as a background  -->
+                </div>
+                <div class="adviceArea__text">
+                    <p>Add each sentence on a new line. Single chunk consist of a word by default.</p>
+                    <p>Use <strong>"+"</strong> sign to have several words in one chunk.Then press <strong>"Shuffle words"</strong> button.</p>
+                </div>
+            </div>
+        </section>
+        <section class="secondaryActionButtons secondaryActionButtons--hidden">
+            <div class="modeSelection customRadioSelection__container">
+                <label class="modeSelection__label customRadioSelection__label">
+                    <input type="radio" name="modeSelection" id="asWhole" onclick="selectMode()"/>
+                    Check sentence as a whole 
+                </label>
+                <label class="modeSelection__label customRadioSelection__label">
+                    <input type="radio" name="modeSelection" id="byChunk"  checked onclick="selectMode()"/>
+                    Check sentence chunk by chunk
+                </label>
+            </div>
+            <button class="buttonGeneral buttonGeneral__secondary" onclick="checkAllSentences()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40px" height="40px" fill="#fff" id="checkmark"><g data-name="Layer 2"><g data-name="checkmark-square"><path d="M20 11.83a1 1 0 0 0-1 1v5.57a.6.6 0 0 1-.6.6H5.6a.6.6 0 0 1-.6-.6V5.6a.6.6 0 0 1 .6-.6h9.57a1 1 0 1 0 0-2H5.6A2.61 2.61 0 0 0 3 5.6v12.8A2.61 2.61 0 0 0 5.6 21h12.8a2.61 2.61 0 0 0 2.6-2.6v-5.57a1 1 0 0 0-1-1z"></path><path d="M10.72 11a1 1 0 0 0-1.44 1.38l2.22 2.33a1 1 0 0 0 .72.31 1 1 0 0 0 .72-.3l6.78-7a1 1 0 1 0-1.44-1.4l-6.05 6.26z"></path></g></g></svg>Check all</button>
+        </section>
+        <div class="actionPane">
+            <button  class="buttonGeneral actionPane__button" onclick="changeFontSize(2)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="zoom-in"><g data-name="Layer 2"><g data-name="maximize"><rect width="24" height="24" opacity="0"></rect><path d="M20.71 19.29l-3.4-3.39A7.92 7.92 0 0 0 19 11a8 8 0 1 0-8 8 7.92 7.92 0 0 0 4.9-1.69l3.39 3.4a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 11a6 6 0 1 1 6 6 6 6 0 0 1-6-6z"></path><path d="M13 10h-1V9a1 1 0 0 0-2 0v1H9a1 1 0 0 0 0 2h1v1a1 1 0 0 0 2 0v-1h1a1 1 0 0 0 0-2z"></path></g></g></svg>
+                <span class="actionPane__tooltip">Increase font size</span></button>
+            </button>
+            <button class="buttonGeneral actionPane__button" onclick="changeFontSize(-2)">
+                <svg width="30px" height="30px" viewBox="0 0 20 20"   xmlns="http://www.w3.org/2000/svg"><path fill="#000" d="M1.81818182,1.36363636 C1.5671433,1.36363636 1.36363636,1.5671433 1.36363636,1.81818182 L1.36363636,18.1818182 C1.36363636,18.4328567 1.5671433,18.6363636 1.81818182,18.6363636 L18.1818182,18.6363636 C18.4328567,18.6363636 18.6363636,18.4328567 18.6363636,18.1818182 L18.6363636,1.81818182 C18.6363636,1.5671433 18.4328567,1.36363636 18.1818182,1.36363636 L1.81818182,1.36363636 Z M18.1818182,0 C19.1859723,0 20,0.814027728 20,1.81818182 L20,18.1818182 C20,19.1859723 19.1859723,20 18.1818182,20 L1.81818182,20 C0.814027728,20 0,19.1859723 0,18.1818182 L0,1.81818182 C0,0.814027728 0.814027728,0 1.81818182,0 L18.1818182,0 Z M12.2066229,6.81750327 L10.01,9.011 L7.81496625,6.81750327 C7.57521591,6.57797386 7.20156116,6.5541821 6.93520889,6.74601683 L6.85072984,6.81794775 C6.58458604,7.08433702 6.58478504,7.51604037 6.85117431,7.78218417 L6.85117431,7.78218417 L9.046,9.975 L6.85117431,12.1680169 C6.58478504,12.4341607 6.58458604,12.865864 6.85072984,13.1322533 C7.11687363,13.3986426 7.54857698,13.3988416 7.81496625,13.1326978 L10.01,10.938 L12.2066229,13.1326978 C12.4463733,13.3722272 12.820028,13.3960189 13.0863803,13.2041842 L13.1708593,13.1322533 C13.4370031,12.865864 13.4368041,12.4341607 13.1704149,12.1680169 L13.1704149,12.1680169 L10.975,9.975 L13.1704149,7.78218417 C13.4368041,7.51604037 13.4370031,7.08433702 13.1708593,6.81794775 C12.9047155,6.55155848 12.4730122,6.55135948 12.2066229,6.81750327 Z"></path></svg>
+                <span class="actionPane__tooltip">Decrease font size</span></button>
+        </div>
+    </main>
+    
+
+
+    <script src="DEV/dragula.min.js"></script> 
+    <script src="DEV/script.js"></script> 
+</body>
+</html>

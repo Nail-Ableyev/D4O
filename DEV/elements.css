@@ -1,0 +1,119 @@
+.topContainer {
+    display:flex;
+    justify-content: center;
+}
+
+.topContainer--hidden {
+    visibility: hidden;
+}
+
+.textInput__container {
+    display: flex;
+    justify-content: center;
+    transform:scale(1);
+    transition: 0.5s ease-in-out;
+}
+
+.textInput__container--minimized {
+    transform:scale(0)
+}
+
+.textInput__container--hidden {
+    display:none
+}
+
+.textInput {
+    resize: none;
+    border: 3px solid var(--primary-color);
+    font-family: "Nunito";
+    font-size: 1rem;
+}
+
+.textInput:focus {
+    outline: 3px solid var(--accent-color);
+    border-color: transparent; 
+}
+
+.mainActionButtons__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mainActionButtons__wrapper--hidden{
+    display:none
+}
+
+.sentenceCreator__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+    .sentenceCreator__container--hidden {
+      display: none;
+  }
+
+.jumbledSentence__wrapper{
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    gap: 10px;
+    font-size: var(--font-size-changable);
+    counter-reset: sentence-counter
+}
+
+.jumbledSentence__container{
+    display: flex;
+    counter-increment: sentence-counter
+}
+
+    .jumbledSentence__container > :first-child:before {
+        content: counter(sentence-counter);
+        color:var(--accent-color);
+        font-weight: bold;
+        padding: 10px;
+    }
+
+.jumbledSentence--wrong{
+    border-bottom: 3px dotted red;
+}
+
+.jumbledSentence--correct {
+    border-bottom: 3px dotted green ;
+}
+
+.secondaryActionButtons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15px;
+    position: sticky;
+    bottom:0;
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 49%, rgba(255,255,255,0.8323704481792717) 82%, rgba(255,255,255,0) 100%);
+}
+    .secondaryActionButtons--hidden{
+        display: none;
+}
+
+
+.adviceArea {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    color: var(--secondary-content)
+    }
+    .adviceArea--hidden {
+      display: none;
+  } 
+  
+  .adviceArea__image {
+    width: 120px;
+    height: 120px;
+    background-image: url(./img/robot3.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+  }

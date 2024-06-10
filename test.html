@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .jumbledSentence__wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    gap: 10px;
+    font-size: var(--font-size-changable);
+    counter-reset: sentence-counter
+}
+
+.jumbledSentence__container{
+    display: flex;
+    counter-increment: sentence-counter
+}
+
+    .jumbledSentence__container :before {
+        content: counter(sentence-counter);
+        color: red;
+        font-weight: bold;
+    }
+
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <section class="jumbledSentence__wrapper">
+        <div class="jumbledSentence__container">
+            <div class="jumbledSentence">
+                <div class="jumbledSentence__chunck">an example</div>
+                <div class="jumbledSentence__chunck">This</div>
+                <div class="jumbledSentence__chunck">of a sentence</div>
+                <div class="jumbledSentence__chunck">is</div>
+            </div>
+
+        </div>
+
+</body>
+</html>

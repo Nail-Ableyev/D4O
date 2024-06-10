@@ -1,0 +1,25 @@
+.jumbledSentence {
+    display:flex;
+    gap: 7px;
+    padding:10px
+}
+
+.jumbledSentence__chunk {
+    display: flex;
+    border-radius: 100px;
+    background-color: blue;
+    color: white;
+    min-width: 60px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.jumbledSentence__chunk--correct {
+    background-color: green;
+}
+
+.jumbledSentence__chunk--wrong {
+    background-color: red;
+}
